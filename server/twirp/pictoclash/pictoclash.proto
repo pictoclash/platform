@@ -1,0 +1,24 @@
+syntax = "proto3";
+package pictoclash;
+option  go_package = "twirp/pb";
+
+import "google/protobuf/empty.proto";
+
+service Pictoclash {
+  // -------- Admin functions --------
+  rpc Noop(google.protobuf.Empty) returns (google.protobuf.Empty);
+  rpc TestUser(TestUserReq) returns (TestUserRes);
+}
+
+message User {
+  string id       = 1;
+  string username = 2;
+  string bio      = 3;
+  string pronouns = 4;
+}
+
+message TestUserReq {}
+
+message TestUserRes {
+  User user = 1;
+}

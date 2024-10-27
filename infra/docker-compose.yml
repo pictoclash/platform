@@ -1,0 +1,37 @@
+services:
+  postgres:
+    image: "postgres:16.3"
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "25432:5432"
+
+  app:
+    depends_on:
+      postgres:
+        condition: service_started
+      caddy:
+        condition: service_started
+    image: pictoclash:latest
+    env_file: ".env.server"
+
+  caddy:
+    image: caddy:2.8.4-alpine
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  pgdata:
+  caddy_data:
+  caddy_config:

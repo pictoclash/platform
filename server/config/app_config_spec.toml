@@ -1,0 +1,27 @@
+[settings]
+name = "Pictoclash"
+package_name = "config"
+
+[vars.PGHost]
+var = "PICTOCLASH_PG_HOST"
+type = "string"
+default = "localhost"
+
+[vars.PGUsername]
+var = "PICTOCLASH_PG_USERNAME"
+type = "string"
+default = "postgres"
+
+[vars.PGPassword]
+var = "PICTOCLASH_PG_PASSWORD"
+type = "string"
+
+[vars.PGPort]
+var = "PICTOCLASH_PG_PORT"
+type = "int64"
+default = "25432"
+
+[vars.Environment]
+var = "PICTOCLASH_DEPLOY_ENV"
+type = "enum"
+enum_values = ["local", "dev", "prod"]

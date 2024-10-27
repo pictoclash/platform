@@ -1,0 +1,6 @@
+services:
+  tools:
+    build: .
+    volumes:
+      - ../..:/pictoclash:rw
+    network_mode: host
