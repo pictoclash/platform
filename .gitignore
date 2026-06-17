@@ -46,5 +46,5 @@ next-env.d.ts
 # Files like CLAUDE.md should be generated on the fly
 # to avoid outdated information.
 CLAUDE.md
-.mcp.json
+.mcp.json*
 
